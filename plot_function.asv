@@ -1,0 +1,60 @@
+function [X,Y] = plot_function(T, dimensions, nodes)
+
+% Parameters
+Lx = dimensions(1); % Length of the domain in x-direction
+Ly = dimensions(2); % Length of the domain in y-direction
+nx = nodes(1);      % Number of grid points in x-direction
+ny = nodes(2);      % Number of grid points in y-direction
+
+% Grid spacing
+dx = Lx / (nx - 1);
+dy = Ly / (ny - 1);
+
+T = reshape(T,[nodes(1)-2,nodes(2)-2]);
+
+% Plot the temperature distribution
+% [X, Y] = meshgrid(dx:dx:Lx-dx, dy:dy:Ly-dy);
+
+% [Tx,Ty] = size(T);
+% 
+% X = X(2:Ty+1,2:Tx+1);
+% Y = Y(2:Ty+1,2:Tx+1);
+% 
+% X = rot90(rot90(X));
+% Y = rot90(rot90(Y));
+
+% Parameters
+Lx = dimensions(1); % Length of the domain in x-direction
+Ly = dimensions(2); % Length of the domain in y-direction
+nx = nodes(1);      % Number of grid points in x-direction
+ny = nodes(2);      % Number of grid points in y-direction
+
+% Grid spacing
+dx = Lx / (nx - 1);
+dy = Ly / (ny - 1);
+
+T = reshape(T,[nodes(1)-2,nodes(2)-2]);
+
+% Plot the temperature distribution
+% [X, Y] = meshgrid(dx:dx:Lx-dx, dy:dy:Ly-dy);
+
+% [Tx,Ty] = size(T);
+% 
+% X = X(2:Ty+1,2:Tx+1);
+% Y = Y(2:Ty+1,2:Tx+1);
+% 
+% X = rot90(rot90(X));
+% Y = rot90(rot90(Y));
+
+[X, Y] = meshgrid(1:(nx-2), 1:(ny-2));
+X = (X - 1) * dx;
+Y = (Y - 1) * dy;
+
+figure;
+contourf(X, Y, T', 20);
+colorbar;
+title('Temperature Distribution');
+xlabel('X');
+ylabel('Y');
+
+end
